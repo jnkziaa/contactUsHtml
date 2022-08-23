@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Contact Us </title>
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600;1,800&display=swap');
+            </style>
+</head>
+<div class="aurora">
+    <div class="container">
+        <h1> Connect with Us </h1>
+        <p>We would love to respond to your queries and help you experience the world. Feel free to get in touch with us</p>
+        <div class="contact-box">
+            <div class="contact-left">
+                <h3>Send your request</h3>
+                <form>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input id = "name" type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input id="phoneNumber" type="text" placeholder="(408)123-4567" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input id="emailAddress" type="email" placeholder="john.doe@email.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input id="subject" type="text" placeholder="Subject of contact" required>
+                        </div>
+                    </div>
+                    <label> Message </label>
+                    <textarea id="message" rows="7" placeholder="Message" required></textarea>
+                    <button type="button" class="button" onclick="validate()"> Submit </button>
+                </form>
+
+            </div>
+            <div class="contact-right">
+                <h3>Reach us</h3>
+                <table>
+                    <tr>
+                        <td>Email : </td>
+                        <td>contact@email.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone : </td>
+                        <td>(408)123-4567</td>
+                    </tr>
+                    <tr>
+                        <td>Address : </td>
+                        <td>Aurora Borealis Street Apt. A <br>
+                            Cool Lights, CL <br>
+                            90210
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <script>
+  function validate(){
+            let name = document.getElementById("name").value;
+            let emailAddress = document.getElementById("emailAddress").value;
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let subject = document.getElementById("subject").value;
+            let message = document.getElementById("message").value;
+            const regexName = /^[a-z ,.'-]+$/i;
+            const regexEmailAddress = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const regexPhoneNumber =  /^(\([0-9]{3}\)\s*|[0-9]{3}\-)[0-9]{3}-[0-9]{4}$/;
+
+            if(!regexName.test(name)){
+                alert("Not a valid name")
+                return;
+            }
+
+            if(!regexPhoneNumber.test(phoneNumber)){
+                alert("Not a valid phone number");
+                return;
+            }
+                
+            if(!regexEmailAddress.test(emailAddress)){
+                alert("Not a valid email address");
+                return;
+            }
+
+
+            if(subject.length < 1){
+                alert("Subject cannot be left empty");
+                return;
+            }
+            
+            if(message.length < 10){
+                alert("Messages cannot be less than 10 characters");
+                return;
+            }
+
+            alert("Request has been sent. Thank you for connecting with us")
+            window.location.href = "validationPage.html"
+
+        }
+    </script>
+</body>
+
+</html>
